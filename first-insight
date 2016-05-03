@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+import feedparser
+import requests
+
+insights_feed = requests.get('https://insights.ubuntu.com/feed')
+insights = feedparser.parse(insights_feed.text)
+first_post = insights.entries[0]
+
+print(
+    "Title: " + first_post['title'] + "\n" +
+    "\n" +
+    "Summary:\n" +
+    first_post['summary']
+)
